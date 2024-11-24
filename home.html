@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/home.css" />
+
+    <title>Cooked</title>
+  </head>
+  <body>
+    <div class="game">
+      <!-- Status of fullness and Money Stats-->
+      <div class="barsArea">
+        <div id="timer">00:15</div>
+        <div class="healthBar">
+          <div class="totallyFull"></div>
+          <div class="midFull"></div>
+          <div class="notFull"></div>
+        </div>
+
+        <div class="moneyBar">
+            <span id="cakeCount">0</span> cakes
+        </div>
+      </div>
+
+      <!-- Customers-->
+      <div class="customersArea">
+        <div class="customers">
+            <div id="customer1Order"></div>
+          <div class="customer1" id="customer1CheckOrder">
+            <img src="images/char_bunny.png" />
+          </div>
+          <div id="customer2Order"></div>
+          <div class="customer2">
+            <img src="images/char_chick.png" />
+          </div>
+          <div id="customer3Order"></div>
+          <div class="customer3">
+            <img src="images/char_cow.png" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Variety of Ingredients and Overall cooking work environment-->
+      <div class="cookingStationArea">
+        <div class="food">
+          <div class="topping1" id="addBanana"><img src="images/banana.png" /></div>
+          <div class="topping2" id="addStrawberry"><img src="images/strawberry.png" /></div>
+          <div class="topping3" id="addBlueberry"><img src="images/blueberry.png" /></div>
+          <div class="cake"><img src="images/cake.png" /></div>
+          <div class="cakeStand"><img src="images/cakeStand.png" /></div>
+          <div class="topping4" id="addPineapple"><img src="images/pineapple.png" /></div>
+          <div class="topping5" id="addSprinkles"><img src="images/sprinkles.png" /></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function getRandomInt(min, max) {
+        min = Math.ceil(min); // Round up to the nearest integer
+        max = Math.floor(max); // Round down to the nearest integer
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      const toppings = [
+        "banana",
+        "strawberry",
+        "blueberry",
+        "pineapple",
+        "sprinkles",
+      ];
+
+      function generateOrder() {
+        let numberOfToppings = getRandomInt(0, 2);
+        let selectedToppings = [];
+
+        for (let i = 0; i <= numberOfToppings; i++) {
+            let foundUniqueTopping = false
+            while (!foundUniqueTopping) {
+                let randomToppingIndex = getRandomInt(0, toppings.length - 1);
+                if (!selectedToppings.includes (toppings[randomToppingIndex])){
+                    selectedToppings.push(toppings[randomToppingIndex])
+                    foundUniqueTopping = true
+
+                }
+            }
+
+        }
+
+        return selectedToppings
+      }
+
+      let customer1Order
+
+      function resetCustomer1() {
+        customer1Order = generateOrder()
+        let element = document.getElementById("customer1Order")
+        let htmlUpdate = ""
+        for (let i = 0; i < customer1Order.length; i ++) {
+          let orderItem = customer1Order[i]
+          htmlUpdate += `<img src="images/${orderItem}.png" class="order">`
+        }
+        element.innerHTML = htmlUpdate
+      }
+
+      resetCustomer1()
+
+      let cakeIngredients = []
+      let cakeCount = 0
+
+      
+      function addIngredient(event, ingredientName){
+        console.log(event)
+        console.log(ingredientName)
+        if (!cakeIngredients.includes(ingredientName)){
+            cakeIngredients.push(ingredientName)
+        }
+        console.log(cakeIngredients)
+      }
+
+      document.getElementById("addBanana").addEventListener("click", function (event) {
+        addIngredient(event, "banana")
+      })
+
+      document.getElementById("addStrawberry").addEventListener("click", function (event) {
+        addIngredient(event, "strawberry")
+        })
+
+        document.getElementById("addBlueberry").addEventListener("click", function (event) {
+        addIngredient(event, "blueberry")
+        })
+
+        document.getElementById("addPineapple").addEventListener("click", function (event) {
+    addIngredient(event, "pineapple")
+        })
+
+        document.getElementById("addSprinkles").addEventListener("click", function (event) {
+     addIngredient(event, "sprinkles")
+        })
+
+        document.getElementById("customer1CheckOrder").addEventListener("click", function(event){
+            let validOrder = true 
+
+            customer1Order.forEach( function (ingredient){
+                    if (!cakeIngredients.includes(ingredient)){
+                        validOrder = false
+                    }
+            })
+
+            if (validOrder == true) {
+                alert("You made me happy! Thank you!")
+                cakeCount++ 
+                document.getElementById("cakeCount").innerText=cakeCount
+                resetCustomer1()
+
+            }
+            else {
+                alert("I hate you!")
+            }
+        })
+
+
+        let seconds = 15; // Start time in seconds
+
+        function startTimer() {
+            const timerElement = document.getElementById("timer");
+            setInterval(() => {
+                seconds--;
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = seconds % 60;
+                timerElement.textContent = 
+                    `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+            }, 1000); // Update every second
+        }
+
+        // Start the timer when the page loads
+        startTimer();
+
+    </script>
+  </body>
+</html>

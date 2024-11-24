@@ -1,0 +1,182 @@
+html,
+body {
+  background-color: #000;
+}
+
+.game {
+  width: 1000px;
+  height: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 80px;
+  background-color: #fff;
+  position: relative;
+  image-rendering: pixelated; /* Preferred for pixel art */
+image-rendering: crisp-edges; /* Alternative for some browsers */
+
+}
+
+.barsArea {
+  position: absolute;
+  background-color: #f6a230;
+  height: 100px;
+  width: 1000px;
+}
+
+
+#timer {
+    position: absolute;
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.healthBar {
+  position: absolute;
+  width: 450px;
+  height: 100px;
+  left: 100px;
+}
+
+.totallyFull {
+  position: absolute;
+  background-color: rgb(120, 143, 120);
+  width: 100px;
+  top: 3px;
+  left: 150px;
+  height: 95px;
+}
+
+.midFull {
+  position: absolute;
+  background-color: rgb(170, 227, 170);
+  width: 100px;
+  top: 3px;
+  left: 250px;
+  height: 95px;
+}
+
+.notFull {
+  position: absolute;
+  background-color: rgb(201, 235, 201);
+  width: 100px;
+  top: 3px;
+  left: 350px;
+  height: 95px;
+}
+
+.moneyBar {
+  position: absolute;
+  background-color: #e8e3dd;
+  width: 200px;
+  height: 95px;
+  text-align:center;
+  left: 750px;
+}
+
+.customersArea {
+  position: absolute;
+  background-color: #6b95cd;
+  height: 400px;
+  width: 1000px;
+  top: 100px;
+}
+
+.customer1 img{
+    position: absolute;
+    height: 200px;
+    width:200px;
+    top: 270px;
+}
+
+.customer2 img{
+    position: absolute;
+    height: 200px;
+    width:150px;
+    left:400px;
+    top: 270px;
+
+}
+
+.customer3 img{
+    position: absolute;
+    height: 200px;
+    width:200px;
+    left:800px;
+    top: 270px;
+
+}
+
+.cookingStationArea {
+  position: absolute;
+  height: 400px;
+  width: 1000px;
+  background-color: #865514;
+  top: 500px;
+}
+
+
+.topping1 img{
+    position: absolute;
+    height: 100px;
+    width:100px;
+    left:50px;
+}
+
+
+.topping2 img{
+    position: absolute;
+    height: 100px;
+    width:100px;
+    left:200px;   
+}
+
+.cake img{
+    position: absolute;
+    height: 300px;
+    width:400px;
+    top:70px;
+    left:300px
+}
+
+.cakeStand img{
+    position: absolute;
+    height: 200px;
+    width:400px;
+    top:250px;
+    left:300px
+}
+.topping3 img{
+    position: absolute;
+    height: 100px;
+    width:100px;
+    left:700px;
+}
+
+.topping4 img{
+    position: absolute;
+    height: 100px;
+    width:100px;
+    left:850px;
+}
+
+.topping5 img{
+    position: absolute;
+    height: 100px;
+    width:100px;
+    left:450px;
+}
+
+
+.order{
+    left:80px;
+    top:200px;
+    height: 70px;
+    width:70px;
+    display:flex;
+    flex-direction: column;
+    gap:30px;
+
+}
